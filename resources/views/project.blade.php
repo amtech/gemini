@@ -3,12 +3,12 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <title>【{{$project->name}}】项目演示</title>
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('/') }}/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/base.css"/>
 
-    <script src="{{ URL::asset('/') }}js/jquery-1.11.2.min.js"></script>
-    <script src="{{ URL::asset('/') }}js/jquery.easing.1.3.js"></script>
-    <script src="{{ URL::asset('/') }}js/jquery.cookie-1.4.1.js"></script>
-    <script id="basejs" src="{{ URL::asset('/') }}js/base.js"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/jquery.cookie-1.4.1.js"></script>
+    <script id="basejs" src="../js/base.js"></script>
     <script>
         $(document).ready(function () {
             @if(\Illuminate\Support\Facades\Cache::get('autoplay'))
@@ -24,7 +24,7 @@
                         <p style="line-height:36px;font-size:14px;">请选择一个用例：</p>\
                         <ul style="line-height:28px;font-size:14px;">\
                         @foreach($project->usecases as $usecase) \
-                        <li><a href="{{ URL::asset('/') }}usecase/{{$usecase->id}}">{{$usecase->name}}</a></li>\
+                        <li><a href="../usecase/{{$usecase->id}}">{{$usecase->name}}</a></li>\
                         @endforeach \
                         </ul>\
                         </div>\

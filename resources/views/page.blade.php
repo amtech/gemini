@@ -3,14 +3,14 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <title>项目演示</title>
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('/') }}/css/jquery-ui-1.11.4.css"/>
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('/') }}/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="..//css/jquery-ui-1.11.4.css"/>
+    <link rel="stylesheet" type="text/css" href="..//css/base.css"/>
 
-    <script src="{{ URL::asset('/') }}js/jquery-1.11.2.min.js"></script>
-    <script src="{{ URL::asset('/') }}js/jquery-ui-1.11.4.js"></script>
-    <script src="{{ URL::asset('/') }}js/jquery.easing.1.3.js"></script>
-    <script src="{{ URL::asset('/') }}js/jquery.cookie-1.4.1.js"></script>
-    <script id="basejs" src="{{ URL::asset('/') }}js/base.js"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../js/jquery-ui-1.11.4.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/jquery.cookie-1.4.1.js"></script>
+    <script id="basejs" src="../js/base.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -37,8 +37,8 @@
                         <p style="width:100%;height:1px;background-color:#dfdfdf;position:absolute;left: 0;"></p>\
                         <p style="line-height:36px;font-size:14px;">请选择：</p>\
                         <ul style="line-height:28px;font-size:14px;">\
-                        <li><a href="{{ URL::asset('/') }}usecase/{{$usecase->id}}">重播</a></li>\
-                        <li><a href="{{ URL::asset('/') }}project/{{$usecase->project_id}}">返回首页</a></li>\
+                        <li><a href="../usecase/{{$usecase->id}}">重播</a></li>\
+                        <li><a href="../project/{{$usecase->project_id}}">返回首页</a></li>\
                         </ul>\
                         </div>\
                         </div>'
@@ -58,7 +58,7 @@
 
                 window.setSetpIndex=function() {
                     $.cookie('usecase_setp_index', {{$i}}, { expires: 365, path: "/"});
-                    window.location.href='{{ URL::asset('/') }}page/{{$index}}';
+                    window.location.href='../page/{{$index}}';
                 }
                 popup($(
                     '<div style="background-color:#ffffff;text-align:center;border-radius:10px;position:relative;">\
@@ -70,9 +70,9 @@
                         @if($index>=0)
                         <li><a href="javascript:;" onclick="setSetpIndex();">从此处开始演示</a></li>\
                         @endif
-                        <li><a href="{{ URL::asset('/') }}page/{{$current_page->page_id}}">继续演示</a></li>\
-                        <li><a href="{{ URL::asset('/') }}usecase/{{$usecase->id}}">重新演示</a></li>\
-                        <li><a href="{{ URL::asset('/') }}project/{{$usecase->project_id}}">返回首页</a></li>\
+                        <li><a href="../page/{{$current_page->page_id}}">继续演示</a></li>\
+                        <li><a href="../usecase/{{$usecase->id}}">重新演示</a></li>\
+                        <li><a href="../project/{{$usecase->project_id}}">返回首页</a></li>\
                         </ul>\
                         </div>\
                         </div>'

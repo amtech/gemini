@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>【{{$project->name}}】项目演示</title>
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('/') }}/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="..//css/base.css"/>
 
-    <script src="{{ URL::asset('/') }}js/jquery-1.11.2.min.js"></script>
-    <script src="{{ URL::asset('/') }}js/jquery.easing.1.3.js"></script>
-    <script id="basejs" src="{{ URL::asset('/') }}js/base.js"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script id="basejs" src="../js/base.js"></script>
     <script>
         $(document).ready(function () {setAutoplay(true);
             @if(\Illuminate\Support\Facades\Cache::get('autoplay'))
@@ -15,7 +15,7 @@
 
             speech('{{$project->description}}', function () {
                 @if($nextid)
-                        window.location.href='{{ URL::asset('/') }}/sheet/{{$nextid}}';
+                        window.location.href='..//sheet/{{$nextid}}';
                 @else
                 //
                 @endif

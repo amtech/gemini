@@ -1,1 +1,1 @@
-<img style="display: block;margin: auto;" src="{{ URL::asset('/') }}images/06.jpg"/>
+<img style="display: block;margin: auto;" src="../images/06.jpg"/>
