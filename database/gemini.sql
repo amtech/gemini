@@ -6,7 +6,7 @@ CREATE TABLE `annotation` (
   `summary` text,
   `selector` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='功能说明步骤';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='功能说明步骤';
 
 INSERT INTO gemini.annotation (summary, selector) VALUES ('开始竞猜阶段，用户可以滚动转盘，选择时间，然后提交。页面初始化默认时间为当前时间。', '#wheelpicker');
 INSERT INTO gemini.annotation (summary, selector) VALUES ('等待开奖阶段，用户已提交竞猜，但还未开奖。', null);
@@ -32,7 +32,7 @@ CREATE TABLE `forward` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `target_page_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='跳转页面步骤';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='跳转页面步骤';
 
 INSERT INTO gemini.forward (target_page_id) VALUES (1);
 INSERT INTO gemini.forward (target_page_id) VALUES (2);
@@ -46,7 +46,7 @@ CREATE TABLE `page` (
   `name` varchar(45) DEFAULT NULL,
   `url` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO gemini.page (name, url) VALUES ('开始竞猜阶段', 'archive.page1');
 INSERT INTO gemini.page (name, url) VALUES ('等待开奖阶段', 'archive.page2');
@@ -61,7 +61,7 @@ CREATE TABLE `project` (
   `description` text,
   `url` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO gemini.project (name, description, url) VALUES ('全民大竞猜', '全民大竞猜是飞跃200亿中的其中一项活动。让用户猜猜看，金额会在哪一天到达200亿。奖品将会以代金卷和实物派出。配套管理系统应当提供，修改竞猜截止时间和公布竞猜结果的时间。上图为，项目的示意图。', 'archive.project');
 
@@ -75,7 +75,7 @@ CREATE TABLE `setp` (
   `order` bigint(20) DEFAULT NULL,
   `page_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO gemini.setp (usecase_id, name, precondition, detail_type, detail_id, `order`, page_id) VALUES (1, '活动开始', null, 'App\\Forward', 1, 1, 1);
 INSERT INTO gemini.setp (usecase_id, name, precondition, detail_type, detail_id, `order`, page_id) VALUES (1, '活动说明', null, 'App\\Annotation', 1, 2, 1);
@@ -119,7 +119,7 @@ CREATE TABLE `sheet1` (
   `url` text COMMENT '页面url',
   `description` longtext COMMENT '文字',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `usecase` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -127,7 +127,7 @@ CREATE TABLE `usecase` (
   `project_id` bigint(20) DEFAULT NULL,
   `order` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 INSERT INTO gemini.usecase (name, project_id, `order`) VALUES ('立项演示', 1, 1);
 INSERT INTO gemini.usecase (name, project_id, `order`) VALUES ('用例a', 1, 2);

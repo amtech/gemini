@@ -8,7 +8,7 @@
     <script src="../js/jquery-1.11.2.min.js"></script>
     <script src="../js/jquery.easing.1.3.js"></script>
     <script src="../js/jquery.cookie-1.4.1.js"></script>
-    <script id="basejs" src="../js/base.js"></script>
+    <script id="basejs" href="{{ URL::asset('/') }}" src="../js/base.js"></script>
     <script>
         $(document).ready(function () {
             @if(\Illuminate\Support\Facades\Cache::get('autoplay'))

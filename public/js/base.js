@@ -1,22 +1,19 @@
 /**
  * Created by idear on 2016/5/16.
  */
-// autoplay=false;
-// function setAutoplay(is_autoplay) {
-//     autoplay=is_autoplay;
-//     $('#autoplay').attr('checked', is_autoplay);
-// }
 
 $(function () {
+    var basejs=$('#basejs');
     var url=$('#basejs').attr('src');
-    baseURL=url.substring(0, url.lastIndexOf('/js/'));
+    var path=url.substring(0, url.lastIndexOf('/js/'));
+    baseURL=realPath(path);
 
     var setting=$(
         '<div style="background-color: #c0ebd1;color:#00ad5f;position:fixed;top: 0;left: 0;z-index: 1001;padding: 5px 10px 10px;border-radius: 10px;line-height: 30px;">\
         <h3 style="border-bottom: 1px solid #00ad5f;line-height: 34px;">菜单</h3>\
         <p style="text-align: left;"><input id="autoplay" name="autoplay" type="checkbox" /> 自动播放</p>\
         <p style="text-align: left;"><input id="static" name="static" type="checkbox" /> 静态化页面</p>\
-        <p style="text-align: left;"><input onclick="blurLayer()" type="button" value="引导层切换" /></p>\
+        <p style="text-align: left;"><input onclick="blurLayer(this)" type="button" value="显示触发区域('+$('.trigger').length+')" /></p>\
         </div>'
     );
     var autoplay=$.cookie('autoplay');
@@ -40,15 +37,50 @@ $(function () {
         $.cookie('static', this.checked, { expires: 365, path: "/"});
     });
 });
-function blurLayer() {
-    if (guideSelector) {
-        guideSelector.css({
+function realPath(path) {
+    if (/^http:\/\//.test(path)) {
+        return path;
+    }
+    var currentDirs=window.location.pathname.split('/');
+    var pathDirs=path.split('/');
+    var dec=1;
+    var tail='';
+    for (var i=0;i<pathDirs.length;i++) {
+        var dir=pathDirs[i];
+        if (dir=='..') {
+            dec++;
+        } else {
+            if (dir!='') {
+                tail+='/'+dir;
+            }
+        }
+    }
+    var len=currentDirs.length-dec;
+    var front='';
+    for (var j=0;j<len;j++) {
+        var dir=currentDirs[j];
+        if (dir!='') {
+            front+='/'+dir;
+        }
+    }
+    return front+tail;
+}
+function blurLayer(ele) {
+    var trigger=$('.trigger');
+    if (/^显示触发区域/.test(ele.value)) {
+        trigger.css({
             'background-color':'',
-            'border':''
+            'border':'1px solid #ffffff'
         });
+        ele.value='隐藏触发区域('+trigger.length+')';
+    } else {
+        trigger.css({
+            'background-color':'transparent',
+            'border':'none'
+        });
+        ele.value='显示触发区域('+trigger.length+')';
     }
 
-    $('#guidelayer').css('display', 'none');
 }
 function Usecase() {
     var frames=[];
@@ -91,9 +123,9 @@ function Usecase() {
             if (fun) {
                 fun();
             }
-            var url=baseURL+'/page/'+pageId;
-            if (window.location.href!=url) {
-                window.location.href=url;
+            var pathname=baseURL+'/page/'+pageId;
+            if (window.location.pathname!=pathname) {
+                window.location.href=pathname;
             } else {
                 $(document).dequeue('usecase');
             }
@@ -175,7 +207,6 @@ function guide(selector, nextSetp) {
     selector.css({
         'z-index': 1001,
         'background-color':'transparent',
-        'border':'none'
     });
 }
 

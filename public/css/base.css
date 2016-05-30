@@ -58,6 +58,7 @@ body {
     height:100%;
     background-color: rgba(0, 0, 0, 0.7);
     display: table;
+    z-index: 9999;
 }
 .popup_floor>.popup_wrap {
     display: table-cell;
@@ -71,7 +72,6 @@ body {
 
 .trigger {
     background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid #ffffff;
     position: absolute;
     top:0px;
     left:0px;

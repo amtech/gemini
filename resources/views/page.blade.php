@@ -10,7 +10,7 @@
     <script src="../js/jquery-ui-1.11.4.js"></script>
     <script src="../js/jquery.easing.1.3.js"></script>
     <script src="../js/jquery.cookie-1.4.1.js"></script>
-    <script id="basejs" src="../js/base.js"></script>
+    <script id="basejs" href="{{ URL::asset('/') }}" src="../js/base.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -57,7 +57,7 @@
                 @endfor
 
                 window.setSetpIndex=function() {
-                    $.cookie('usecase_setp_index', {{$i}}, { expires: 365, path: "/"});
+                    $.cookie('usecase_setp_index', {{$i+1<$usecaseCount?$i+1:$usecaseCount}}, { expires: 365, path: "/"});
                     window.location.href='../page/{{$index}}';
                 }
                 popup($(
