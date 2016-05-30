@@ -16,6 +16,7 @@ $(function () {
         <h3 style="border-bottom: 1px solid #00ad5f;line-height: 34px;">菜单</h3>\
         <p style="text-align: left;"><input id="autoplay" name="autoplay" type="checkbox" /> 自动播放</p>\
         <p style="text-align: left;"><input id="static" name="static" type="checkbox" /> 静态化页面</p>\
+        <p style="text-align: left;"><input onclick="blurLayer()" type="button" value="引导层切换" /></p>\
         </div>'
     );
     var autoplay=$.cookie('autoplay');
@@ -39,7 +40,16 @@ $(function () {
         $.cookie('static', this.checked, { expires: 365, path: "/"});
     });
 });
+function blurLayer() {
+    if (guideSelector) {
+        guideSelector.css({
+            'background-color':'',
+            'border':''
+        });
+    }
 
+    $('#guidelayer').css('display', 'none');
+}
 function Usecase() {
     var frames=[];
     this.custom=function (fun) {
@@ -108,8 +118,10 @@ function Usecase() {
     return this;
 }
 
+var guideSelector;
 function guide(selector, nextSetp) {
     $('.trigger').css('z-index', 0);
+    guideSelector=selector;
     var position=selector.position();
     $(document.body).animate({
         scrollTop: position.top
@@ -162,7 +174,8 @@ function guide(selector, nextSetp) {
     });
     selector.css({
         'z-index': 1001,
-        'background-color':'transparent'
+        'background-color':'transparent',
+        'border':'none'
     });
 }
 

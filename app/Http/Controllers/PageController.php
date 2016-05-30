@@ -30,7 +30,7 @@ class PageController extends Controller
         if (Cookie::get('static')=='true') {
             $path=$request->getPathInfo();
             $path=substr($path, 1);
-            Storage::disk('public_path')->put($path, $response);
+            Storage::disk('public_path')->put($path.'.html', $response);
         }
         return $response;
     }
