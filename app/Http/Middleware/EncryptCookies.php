@@ -12,6 +12,9 @@ class EncryptCookies extends BaseEncrypter
      * @var array
      */
     protected $except = [
-        //
+        'usecase_id',
+        'usecase_setp_index',
+        'autoplay',
+        'static'
     ];
 }

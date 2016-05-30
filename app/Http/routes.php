@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/setting/{key}/{value}', 'SettingController@set');
+
+Route::get('/project/{id}', 'ProjectController@find');
+Route::get('/usecase/{id}', 'UsecaseController@find');
+Route::get('/page/{id}', 'PageController@find');
